@@ -1,0 +1,161 @@
+<?php
+require_once 'includes/config_session.inc.php';
+require_once 'includes/submit_view.inc.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Orchards Events</title>
+</head>
+
+<body>
+    <div class="bg-img"></div>
+    
+    <div class="wrapper">
+        <!-- Title -->
+        <div class="title text-start pt-2 ps-3">
+            <h1 style="color: aliceblue;">Orchards Events</h1>
+        </div>
+
+        <!-- Event Information -->
+        <div id ="info" class="card-wrapper">
+            <div class="card mb-2 card-info">
+                <div class="card-body event-info">
+                    <h2 class="card-title text-center fs-5">Event Information</h2>
+                    <div class="row fs-6">
+                        <div class="col-md-6 text-end">
+                            <p><strong>Date:</strong> 03 August 2024</p>
+                            <p><strong>Venue:</strong> Orchards Hall</p>
+                        </div>
+                        <div class="col-md-6 text-start">
+                            <p><strong>Time:</strong> 14:00</p>
+                            <p><strong>Price:</strong> R100 per plate</p>                            
+                        </div>                        
+                        <p class="text-center">Please bring own plate and eating utensils.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Form -->
+        <!-- <div class="container"> -->
+            <div id ="form" class="card-wrapper">
+                <div class="card card-form">
+                    <div class="card-body event-info">
+                            <form action="includes/submit.inc.php" method="post" id="reservationForm" class="form">
+                                <!-- Congregation -->
+                                <div class="form-group">
+                                    <label for="congregation" class="form-label">Congregation</label>
+                                    <select name="congregation" id="congregation" class="form-control" aria-label="Congregation Selection" required>
+                                        <option disabled selected value="">Select Congregation</option>
+                                        <option value="Hartebeespoort">Hartebeespoort</option>
+                                        <option value="Pretoria North">Pretoria North</option>
+                                        <option value="Waterval">Waterval</option>
+                                        <option value="Orchards">Orchards</option>
+                                        <option value="Magalies">Magalies</option>
+                                        <option value="Brits">Brits</option>
+                                    </select>
+                                </div>
+
+                                <!-- Office -->
+                                <div class="form-group">
+                                    <label for="office" class="form-label">Office</label>
+                                    <select name="office" id="office" class="form-control" aria-label="Office Selection" required>
+                                        <option disabled selected value="">Select Office</option>
+                                        <option value="Brother">Brother</option>
+                                        <option value="Sister">Sister</option>
+                                        <option value="Underdeacon">Underdeacon</option>
+                                        <option value="Priest">Priest</option>
+                                        <option value="Elder">Elder</option>
+                                        <option value="FFO">FFO</option>
+                                    </select>
+                                </div>
+
+                                <!-- Name and Surname -->
+                                <div class="form-floating mb-3">
+                                    <input name="first_name" type="text" class="form-control" id="firstName" placeholder="Name" required>
+                                    <label for="firstName">Name</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input name="last_name" type="text" class="form-control" id="lastName" placeholder="Surname" required>
+                                    <label for="lastName">Surname</label>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+
+                                <!-- Plates -->
+                                <div class="plate-rows row mb-3">
+                                    <div class="beef-plate col">
+                                        <label for="beef_plates" class="form-label text-center">Beef Plates</label>
+                                        <input name="beef_plates" type="number" class="form-control beef" id="beef-plates" placeholder="Enter Amount Here" aria-label="Beef_Plates" min="0">
+                                    </div>
+                                    <div class="and-or col-auto d-flex align-items-center pt-4">
+                                        <span class="text-dark">and/or</span>
+                                    </div>
+                                    <div class="chicken-plate col">
+                                        <label for="chicken_plates" class="form-label text-center">Chicken Plates</label>
+                                        <input name="chicken_plates" type="number" class="form-control chicken" id="chicken-plates" placeholder="Enter Amount Here" aria-label="Chicken_Plates" min="0">
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-grid">
+                                    <button type="button" class="btn submit-btn" id="submitBtn">Submit</button>
+                                </div>
+                            </form>
+                        </div>  
+                    </div>
+                <!-- </div> -->
+
+            <?php check_submit_errors(); ?>
+        </div>
+
+        <br>
+
+        <div id ="count" class="card-wrapper">
+            <div class="card card-countdown">
+                <div class="countdown-container card-body text-center">
+                    <h3 class="fw-bold">This form will close on the <br> 25th of July 2024.</h3>
+                    <div id="countdown">
+                        <span id="days"></span> <i>days,</i>
+                        <span id="hours"></span> <i>hours,</i>
+                        <span id="minutes"></span> <i>minutes,</i>
+                        <span id="seconds"></span> <i>s</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Form Information.</h5>
+                    <p>Please make sure that your information is correct.</p>                    
+                </div>
+                <div class="modal-body">
+                    <p id="confirmationDetails"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="md-yes btn" id="confirmBtn">Yes</button>
+                    <button type="button" class="md-no btn" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

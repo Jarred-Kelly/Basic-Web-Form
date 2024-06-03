@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.alert {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.retry {
+    width: 100%;
+    height: 2.5rem;
+    font-weight: 500;
+    border: none;
+    color: #fff;
+    border-radius: 50px;
+    transition: ease-out 2s;
+    font-size: 1rem;
+    outline: none;
+    background: linear-gradient(180deg, rgb(139, 0, 0), rgb(255, 0, 0, 0.9));
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.new-link {
+    width: 100%;
+    height: 2.5rem;
+    font-weight: 500;
+    border: none;
+    color: #fff;
+    border-radius: 50px;
+    transition: ease-out 2s;
+    font-size: 1rem;
+    outline: none;
+    background: linear-gradient(180deg, rgb(236, 88, 0), rgb(255, 68, 51, 0.9));
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.btn {
+    width: 100%;
+    margin-top: 1rem;
+}
