@@ -5,12 +5,6 @@ A simple one-page web form created for a family member.
 ## Table of Contents
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Database Setup](#database-setup)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Features
 - User-friendly web form
@@ -25,4 +19,4 @@ A simple one-page web form created for a family member.
 - Bootstrap
 - PHP
 - JavaScript
-- MySQL (for database)
+- MySQL (for Database)
